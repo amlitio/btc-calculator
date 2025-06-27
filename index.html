@@ -60,9 +60,9 @@
 
     async function fetchBTCPrice() {
       try {
-        const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/USD.json');
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
         const data = await response.json();
-        currentPrice = parseFloat(data.bpi.USD.rate.replace(',', ''));
+        currentPrice = data.bitcoin.usd;
         document.getElementById("btc-price").textContent = `$${currentPrice.toLocaleString()} USD`;
       } catch (error) {
         document.getElementById("btc-price").textContent = "Failed to fetch price.";
